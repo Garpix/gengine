@@ -1,0 +1,40 @@
+{
+  "name": "@garpix/gengine",
+  "version": "0.16.0",
+  "private": true,
+  "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "lodash": "^4.17.15",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1",
+    "three": "^0.108.0"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "autoformat": "prettier --trailing-comma es5 --write './src/**/*.{js,jsx}'",
+    "build": "babel ./src/gengine/ --out-dir ./dist && npm pack && mv *.tgz ./out/",
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
