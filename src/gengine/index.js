@@ -4,6 +4,7 @@ import OrbitControls from './components/controls/OrbitControls';
 import DraggableFirstPersonControls from './components/controls/DraggableFirstPersonControls';
 import Raycast from './components/controls/Raycast';
 import Box from "./components/primitives/Box";
+import Sphere from "./components/primitives/Sphere";
 import Cylinder from "./components/primitives/Cylinder";
 import AmbientLight from "./components/lights/AmbientLight";
 import DirectionalLight from "./components/lights/DirectionalLight";
@@ -20,6 +21,7 @@ export {
     DraggableFirstPersonControls,
     Raycast,
     Box,
+    Sphere,
     Cylinder,
     AmbientLight,
     DirectionalLight,

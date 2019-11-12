@@ -4,6 +4,7 @@ import {
     PerspectiveCamera,
     OrbitControls,
     Box,
+    Sphere,
     AmbientLight,
     DirectionalLight,
     Raycast,
@@ -19,7 +20,7 @@ class App extends React.Component {
                         <OrbitControls />
                         <Raycast />
                     </PerspectiveCamera>
-                    <Box />
+                    <Sphere />
                     <Box position={[0, -0.5, 0]} scale={[10, 0.1, 10]} color={'red'} />
                     <Box position={[1, 1, 1]} />
                     <AmbientLight intensity={0.3} />
