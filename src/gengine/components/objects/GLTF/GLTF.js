@@ -129,8 +129,8 @@ class GLTF extends AbstractObject {
                         for (let key in nextProps.textures) {
                             // console.log('hi', textureName, node.material.map.name)
                             if (textureName === node.material.map.name) {
-                                let texture = this.loadTexture({url: nextProps.textures[key]});
-                                // node.material.color.setStyle(nextProps.textures[key].color);
+                                let texture = this.loadTexture({url: nextProps.textures[key].url});
+                                node.material.color.setStyle(nextProps.textures[key].color);
                                 node.material.map = texture;
                             }
                         }

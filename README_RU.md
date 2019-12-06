@@ -376,7 +376,7 @@ class App extends React.Component {
         <td>[1, 1, 1]</td>
     </tr>
     <tr>
-        <td>textures={{'base.png': '/static/another_texture.png'}}</td>
+        <td>textures={{'base.png': {url: '/static/another_texture.png', color: '#ffffff'}}</td>
         <td>Перезаписывает текстуру по имени (см. ключ) на другую (см. значение).</td>
         <td>{}</td>
     </tr>
