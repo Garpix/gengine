@@ -371,9 +371,14 @@ class App extends React.Component {
         <td>[0, 0, 0]</td>
     </tr>
     <tr>
-    <td>scale={[1, 1, 1]}</td>
+        <td>scale={[1, 1, 1]}</td>
         <td>Масштаб, на сколько увеличить или уменьшить объект по каждой стороне от оригинального размера.</td>
         <td>[1, 1, 1]</td>
+    </tr>
+    <tr>
+        <td>textures={{'base.png': '/static/another_texture.png'}}</td>
+        <td>Перезаписывает текстуру по имени (см. ключ) на другую (см. значение).</td>
+        <td>{}</td>
     </tr>
 </table>
 
@@ -520,6 +525,28 @@ Skybox - небо, куб окружения, внутри которого мы
         <td>radialSegments={32}</td>
         <td>Количество сегментов. Чем больше, тем плавнее будет окружность, но будет больше треугольников.</td>
         <td>32</td>
+    </tr>
+</table>
+
+### Screenshot
+
+Утилитарный компонент - создание скриншотов.
+
+#### Свойства (props)
+
+<table>
+    <tr>
+        <td>Свойство</td>
+        <td>Описание</td>
+        <td>По умолчанию</td>
+    </tr>
+    <tr>
+        <td>takeScreenshot={(screenshotFunction) => {this.takeScreenshot = screenshotFunction}}</td>
+        <td>
+            Функция, которая перезаписывает внешнюю функцию по созданию скриншота.
+            Перезапись обязательна. Для примера смотрите examples/screenshot
+        </td>
+        <td>undefined</td>
     </tr>
 </table>
 

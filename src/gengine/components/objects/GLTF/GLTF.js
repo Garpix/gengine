@@ -1,6 +1,7 @@
 import React from 'react';
 import {
     GLTFLoader,
+    TextureLoader,
 } from 'three/examples/jsm/loaders/GLTFLoader';
 import AbstractObject from "../../abstract/AbstractObject";
 import {
@@ -102,14 +103,39 @@ class GLTF extends AbstractObject {
         });
     }
 
+    loadTexture = ({url=null, base64=null}) => {
+        let textureLoader = new TextureLoader();
+        let texture = textureLoader.load(url);
+        texture.flipY = false;
+        return texture;
+    };
+
     shouldComponentUpdate(nextProps) {
-        const {animation} = this.props;
+        const {animation, textures} = this.props;
         // console.log('nextProps', nextProps);
         if (nextProps.animation && nextProps.animation.clipName) {
             if (!animation || animation.clipName !== nextProps.animation.clipName) {
                 this.setAnimation({
                     clipName: nextProps.animation.clipName,
                 })
+            }
+        }
+        // override texture
+        if (nextProps.textures) {
+            if (JSON.stringify(nextProps.textures) !== JSON.stringify(textures)) {
+                this.obj.traverse( ( node ) => {
+                    if (node.isMesh) {
+                        const textureName = node.material.map.name;
+                        for (let key in nextProps.textures) {
+                            // console.log('hi', textureName, node.material.map.name)
+                            if (textureName === node.material.map.name) {
+                                let texture = this.loadTexture({url: nextProps.textures[key]});
+                                // node.material.color.setStyle(nextProps.textures[key].color);
+                                node.material.map = texture;
+                            }
+                        }
+                    }
+                });
             }
         }
         // console.log('GLTF shouldComponentUpdate');

@@ -13,6 +13,7 @@ import PointLight from "./components/lights/PointLight";
 import GLTF from "./components/objects/GLTF";
 import Sky from "./components/objects/Sky";
 import Fog from "./components/effects/Fog";
+import Screenshot from "./components/utils/Screenshot";
 
 export {
     Canvas,
@@ -30,4 +31,5 @@ export {
     GLTF,
     Sky,
     Fog,
+    Screenshot,
 };
