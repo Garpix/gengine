@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.16.10 (06.12.2019)
+
+* Hotfix import.
+
 ### 0.16.9 (06.12.2019)
 
 * Added prop "textures" to component GLTF for overriding textures. 

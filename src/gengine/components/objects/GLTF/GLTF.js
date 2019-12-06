@@ -1,11 +1,11 @@
 import React from 'react';
 import {
     GLTFLoader,
-    TextureLoader,
 } from 'three/examples/jsm/loaders/GLTFLoader';
 import AbstractObject from "../../abstract/AbstractObject";
 import {
     AnimationMixer,
+    TextureLoader,
 } from 'three';
 
 class GLTF extends AbstractObject {
