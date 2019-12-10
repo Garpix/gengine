@@ -376,8 +376,15 @@ class App extends React.Component {
         <td>[1, 1, 1]</td>
     </tr>
     <tr>
-        <td>textures={{'base.png': {url: '/static/another_texture.png', color: '#ffffff'}}</td>
-        <td>Перезаписывает текстуру по имени (см. ключ) на другую (см. значение).</td>
+        <td>materials: {
+            'tile.009': new MeshStandardMaterial({
+              map: this.getTexture('/static/textures/tile.009_baseColor_replaced.png'),
+              normalMap: this.getTexture('/static/textures/tile.009_normal.png'),
+              // color: 0xffffff,
+              name: 'tile.009',
+            }),
+          }</td>
+        <td>Перезаписывает материал по имени (см. ключ) на другую (см. значение). Применяются материалы от Three.js. См. пример "materials".</td>
         <td>{}</td>
     </tr>
 </table>

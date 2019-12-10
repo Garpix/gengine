@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.17.1 (10.12.2019)
+
+* Removed prop "textures", added "materials" for GLTF.
+
 ### 0.16.10 - 0.16.11 (06.12.2019)
 
 * Hotfix import.

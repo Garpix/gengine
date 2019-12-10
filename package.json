@@ -1,6 +1,6 @@
 {
   "name": "@garpix/gengine",
-  "version": "0.16.11",
+  "version": "0.17.2",
   "private": false,
   "dependencies": {
     "@babel/cli": "^7.5.5",
@@ -18,7 +18,7 @@
   "scripts": {
     "autoformat": "prettier --trailing-comma es5 --write './src/**/*.{js,jsx}'",
     "build": "babel ./src/gengine/ --out-dir ./dist && npm pack && mv *.tgz ./out/",
-    "publish": "npm publish --access public",
+    "pub": "yarn build && npm publish --access public",
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
