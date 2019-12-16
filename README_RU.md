@@ -376,16 +376,31 @@ class App extends React.Component {
         <td>[1, 1, 1]</td>
     </tr>
     <tr>
-        <td>materials: {
-            'tile.009': new MeshStandardMaterial({
-              map: this.getTexture('/static/textures/tile.009_baseColor_replaced.png'),
-              normalMap: this.getTexture('/static/textures/tile.009_normal.png'),
-              // color: 0xffffff,
-              name: 'tile.009',
-            }),
+        <td>materials={
+            'red': {
+              'tile.009': new MeshStandardMaterial({
+                map: this.getTexture('/static/textures/tile.009_baseColor.png'),
+                normalMap: this.getTexture('/static/textures/tile.009_normal.png'),
+                // color: 0xff0000,
+                name: 'tile.009',
+              }),
+            },
+            'blue': {
+              'tile.009': new MeshStandardMaterial({
+                map: this.getTexture('/static/textures/tile.009_baseColor_replaced.png'),
+                normalMap: this.getTexture('/static/textures/tile.009_normal.png'),
+                // color: 0xffffff,
+                name: 'tile.009',
+              }),
+            }
           }</td>
-        <td>Перезаписывает материал по имени (см. ключ) на другую (см. значение). Применяются материалы от Three.js. См. пример "materials".</td>
+        <td>Прокидывает список материалов для перезаписи по имени (см. ключ) на другую (см. значение). Применяются материалы от Three.js. См. пример "materials". Смена пропса НЕ ПРОИЗВОДИТ перезаписи материалов - это всего лишь словарь. Это сделано специально, т.к. объекты материалов довольно объемны по размеру.</td>
         <td>{}</td>
+    </tr>
+    <tr>
+        <td>selectedMaterial={'red'}</td>
+        <td>На какой список материалов перезаписать объект. Здесь указывается ключ из пропса "materials"</td>
+        <td>null</td>
     </tr>
 </table>
 

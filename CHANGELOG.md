@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.18.0 (16.12.2019)
+
+* Changed logic of props "materials". Added props "selectedMaterial" for GLTF. 
+
 ### 0.17.3 (15.12.2019)
 
 * Exported AbstractObject.

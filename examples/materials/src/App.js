@@ -17,9 +17,31 @@ import "./App.css";
 
 class App extends React.Component {
 
-  state = {
-    materials: {}
-  };
+  constructor() {
+    super();
+    this.state = {
+      materials: {
+        'red': {
+          'tile.009': new MeshStandardMaterial({
+            map: this.getTexture('/static/textures/tile.009_baseColor.png'),
+            normalMap: this.getTexture('/static/textures/tile.009_normal.png'),
+            // color: 0xff0000,
+            name: 'tile.009',
+          }),
+        },
+        'blue': {
+          'tile.009': new MeshStandardMaterial({
+            map: this.getTexture('/static/textures/tile.009_baseColor_replaced.png'),
+            normalMap: this.getTexture('/static/textures/tile.009_normal.png'),
+            // color: 0xffffff,
+            name: 'tile.009',
+          }),
+        }
+      },
+      selectedMaterial: null,
+    };
+  }
+
 
   getTexture = (textureUrl) => {
       let textureLoader = new TextureLoader();
@@ -31,28 +53,14 @@ class App extends React.Component {
   setTextureRed = () => {
     console.log('Texture changed to red');
     this.setState({
-      materials: {
-        'tile.009': new MeshStandardMaterial({
-          map: this.getTexture('/static/textures/tile.009_baseColor.png'),
-          normalMap: this.getTexture('/static/textures/tile.009_normal.png'),
-          // color: 0xff0000,
-          name: 'tile.009',
-        }),
-      },
+      selectedMaterial: 'red',
     })
   };
 
   setTextureBlue = () => {
     console.log('Texture changed to blue');
     this.setState({
-      materials: {
-        'tile.009': new MeshStandardMaterial({
-          map: this.getTexture('/static/textures/tile.009_baseColor_replaced.png'),
-          normalMap: this.getTexture('/static/textures/tile.009_normal.png'),
-          // color: 0xffffff,
-          name: 'tile.009',
-        }),
-      },
+      selectedMaterial: 'blue',
     })
   };
 
@@ -74,6 +82,7 @@ class App extends React.Component {
           <GLTF
             url={"/static/scene.gltf"}
             materials={this.state.materials}
+            selectedMaterial={this.state.selectedMaterial}
           />
           <AmbientLight intensity={1} />
           <DirectionalLight intensity={3} rotation={[0,40,0]}/>

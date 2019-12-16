@@ -103,7 +103,10 @@ class GLTF extends AbstractObject {
     }
 
     shouldComponentUpdate(nextProps) {
-        const {animation, materials} = this.props;
+        const {
+            animation,
+            selectedMaterial = null,
+        } = this.props;
         // console.log('nextProps', nextProps);
         if (nextProps.animation && nextProps.animation.clipName) {
             if (!animation || animation.clipName !== nextProps.animation.clipName) {
@@ -114,12 +117,13 @@ class GLTF extends AbstractObject {
         }
         // override materials
         if (nextProps.materials) {
-            if (JSON.stringify(nextProps.materials) !== JSON.stringify(materials)) {
+            if (nextProps.selectedMaterial !== selectedMaterial) {
+                const newMaterials = nextProps.materials[nextProps.selectedMaterial];
                 this.obj.traverse( ( node ) => {
                     if (node.isMesh) {
                         // console.log('node.material.name', node.material.name);
-                        if (node.material && Object.keys(nextProps.materials).includes(node.material.name)) {
-                            node.material = nextProps.materials[node.material.name];
+                        if (node.material && Object.keys(newMaterials).includes(node.material.name)) {
+                            node.material = newMaterials[node.material.name];
                             node.material.needsUpdate = true;
                         }
                     }
