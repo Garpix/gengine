@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.17.3 (15.12.2019)
+
+* Exported AbstractObject.
+
 ### 0.17.1 (10.12.2019)
 
 * Removed prop "textures", added "materials" for GLTF.

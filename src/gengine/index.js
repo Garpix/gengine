@@ -14,8 +14,10 @@ import GLTF from "./components/objects/GLTF";
 import Sky from "./components/objects/Sky";
 import Fog from "./components/effects/Fog";
 import Screenshot from "./components/utils/Screenshot";
+import AbstractObject from "./components/abstract/AbstractObject";
 
 export {
+    AbstractObject,
     Canvas,
     PerspectiveCamera,
     OrbitControls,
