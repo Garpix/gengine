@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.18.3 (17.12.2019)
+
+* Changed OrbitControls.
+
 ### 0.18.0 (16.12.2019)
 
 * Changed logic of props "materials". Added props "selectedMaterial" for GLTF. 
