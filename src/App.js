@@ -15,7 +15,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Canvas fullscreen={true} gammaFactor={1.0} enableShadows={true}>
+                <Canvas fullscreen={true} gammaFactor={1.0} enableShadows={true} >
                     <PerspectiveCamera position={[0, 1, 5]}>
                         <OrbitControls />
                         <Raycast />

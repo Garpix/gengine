@@ -4,6 +4,7 @@ import {
     WebGLRenderer,
     Clock,
 } from "three";
+import StereoEffect from './StereoEffect'
 // import {initialize} from '../../../actions';
 // import {connect} from "react-redux";
 import {SCENE_NAME} from '../../../constants';
@@ -26,6 +27,7 @@ class Canvas extends React.Component {
         this.components = []; // {name: 'example', obj: threejsObj, ready: false, onClick: null, onHover: null}
         this.clock = null;
         this.debug = false;
+        this.enableVR = false; //activate VR mode
         //
         this.state = {
             ready: false,
@@ -41,6 +43,7 @@ class Canvas extends React.Component {
         const {
             fullscreen = false,
             enableShadows = false,
+            enableVR = false,
             debug = false,
             gammaFactor = 1,
         } = this.props;
@@ -61,13 +64,22 @@ class Canvas extends React.Component {
         this.renderer.gammaOutput = true;
         this.renderer.gammaFactor = gammaFactor;
         this.renderer.autoClearColor = false;
-
         // this.renderer = new WebGLRenderer();
-        this.renderer.setSize(this.canvasWidth, this.canvasHeight);
+        // this.renderer.setSize(this.canvasWidth, this.canvasHeight);
         this.renderer.shadowMap.enabled = this.enableShadows;
         this.renderer.shadowCameraNear = 3;
         this.renderer.shadowCameraFar = 1000;
         this.renderer.shadowCameraFov = 50;
+        this.enableVR = enableVR,
+        this.renderer.vr.enabled = enableVR
+
+        if (enableVR) {
+          this.effect = new StereoEffect(this.renderer)
+        }
+
+        this.getVRDisplay((display) => {
+            this.renderer.vr.setDevice(display);
+        });
         //
         this.resize();
         window.addEventListener("resize", this.resize);
@@ -83,6 +95,15 @@ class Canvas extends React.Component {
         //     }, 3000
         // )
     }
+    
+    getVRDisplay = ( onDisplay ) => {
+      if ( 'getVRDisplays' in navigator ) {
+        navigator.getVRDisplays()
+          .then(( displays ) => {
+            onDisplay( displays[ 0 ] );
+          });
+      }
+    }
 
     resize = () => {
         const {
@@ -95,7 +116,12 @@ class Canvas extends React.Component {
             this.canvasHeight = this.canvasDomElement.clientHeight;
             this.canvasWidth = this.canvasDomElement.clientWidth;
         }
-        this.renderer.setSize(this.canvasWidth, this.canvasHeight);
+
+        if (this.enableVR) {
+          this.effect.setSize(this.canvasWidth, this.canvasHeight);
+        } else {
+          this.renderer.setSize(this.canvasWidth, this.canvasHeight);
+        }
     };
 
     addRenderCall = (renderCall) => {
@@ -104,7 +130,7 @@ class Canvas extends React.Component {
 
     // Основная функция отрисовки - берет все вызовы рендера в куче и рендерит их. работает только когда сцена готова
     animate = () => {
-        this.requestId = requestAnimationFrame(this.animate);
+        this.requestId = this.renderer.setAnimationLoop(this.animate);
         const deltaSeconds = this.clock.getDelta();
         this.renderCalls.forEach((callback)=>{callback(deltaSeconds)});
     };
@@ -176,7 +202,9 @@ class Canvas extends React.Component {
         const childrenWithProps = ready ? React.Children.map(this.props.children, (child) => {
             return React.cloneElement(child, {
                 scene: this.scene,
+                enableVR: this.enableVR,
                 renderer: this.renderer,
+                effect: this.effect,
                 canvasWidth: this.canvasWidth,
                 canvasHeight: this.canvasHeight,
                 addRenderCall: this.addRenderCall,

@@ -99,6 +99,11 @@ class App extends React.Component {
         <td>Метод для определения, насколько сцена загружена. От 0 до 100.</td>
         <td>undefined</td>
     </tr>
+    <tr>
+        <td>enableVR={true}</td>
+        <td>Активация VR-режима</td>
+        <td>false</td>
+    </tr>
 </table>
 
 ### PerspectiveCamera
@@ -134,6 +139,7 @@ class App extends React.Component {
 ### DraggableFirstPersonControls
 
 Управление для вращения камерой от первого лица с помощью перетаскивания (drag&drop).
+
 
 #### Свойства (props)
 
@@ -183,6 +189,10 @@ class App extends React.Component {
         <td>20</td>
     </tr>
 </table>
+
+### VRFirstPersonControls
+
+Управление для вращения камерой от первого лица с помощью G-сенсора устройства.
 
 ### Raycast
 
