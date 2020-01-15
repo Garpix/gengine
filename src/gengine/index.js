@@ -2,6 +2,7 @@ import Canvas from './components/canvas/Canvas';
 import PerspectiveCamera from './components/cameras/PerspectiveCamera';
 import OrbitControls from './components/controls/OrbitControls';
 import DraggableFirstPersonControls from './components/controls/DraggableFirstPersonControls';
+import VRFirstPersonControls from './components/controls/VRControls/VRFirstPersonControls';
 import Raycast from './components/controls/Raycast';
 import Box from "./components/primitives/Box";
 import Sphere from "./components/primitives/Sphere";
@@ -22,6 +23,7 @@ export {
     PerspectiveCamera,
     OrbitControls,
     DraggableFirstPersonControls,
+    VRFirstPersonControls,
     Raycast,
     Box,
     Sphere,

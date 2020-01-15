@@ -14,7 +14,7 @@ class PerspectiveCamera extends AbstractObject {
     componentDidMount() {
         const {
             // default from parent
-            scene, canvasHeight, canvasWidth, renderer, addRenderCall,
+            scene, canvasHeight, canvasWidth, renderer, addRenderCall, effect, enableVR,
             // custom
             position = [0, 0, 0],
             zoom = 1,
@@ -25,7 +25,9 @@ class PerspectiveCamera extends AbstractObject {
         this.obj.lookAt( scene.position );
         scene.add(this.obj);
         addRenderCall(() => {
-            renderer.render(scene, this.obj);
+            enableVR ?
+            effect.render(scene, this.obj) :
+            renderer.render(scene, this.obj)
         });
         window.addEventListener("resize", this.resize);
         setTimeout(() => {

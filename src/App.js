@@ -2,12 +2,15 @@ import React from 'react';
 import {
     Canvas,
     PerspectiveCamera,
+    VRFirstPersonControls,
     OrbitControls,
     Box,
     Sphere,
     AmbientLight,
     DirectionalLight,
     Raycast,
+    GLTF,
+    Sky,
 } from './gengine';
 import './App.css';
 
@@ -15,9 +18,10 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Canvas fullscreen={true} gammaFactor={1.0} enableShadows={true}>
+                <Canvas fullscreen={true} gammaFactor={1.0} enableShadows={true} >
                     <PerspectiveCamera position={[0, 1, 5]}>
-                        <OrbitControls />
+                        {/* <OrbitControls /> */}
+                        <VRFirstPersonControls/>
                         <Raycast />
                     </PerspectiveCamera>
                     <Sphere />
