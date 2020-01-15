@@ -15,7 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Canvas fullscreen={true} enableVR enableShadows={true} >
+        <Canvas fullscreen={true} enableVR={true} enableShadows={true} >
             <PerspectiveCamera position={[0, 1, 5]}>
                 <VRFirstPersonControls/>
                 <Raycast />

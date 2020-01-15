@@ -72,8 +72,11 @@ class Canvas extends React.Component {
         this.renderer.shadowCameraFov = 50;
         this.enableVR = enableVR,
         this.renderer.vr.enabled = enableVR
-        this.effect = new StereoEffect(this.renderer)
- 
+
+        if (enableVR) {
+          this.effect = new StereoEffect(this.renderer)
+        }
+
         this.getVRDisplay((display) => {
             this.renderer.vr.setDevice(display);
         });
@@ -199,7 +202,9 @@ class Canvas extends React.Component {
         const childrenWithProps = ready ? React.Children.map(this.props.children, (child) => {
             return React.cloneElement(child, {
                 scene: this.scene,
+                enableVR: this.enableVR,
                 renderer: this.renderer,
+                effect: this.effect,
                 canvasWidth: this.canvasWidth,
                 canvasHeight: this.canvasHeight,
                 addRenderCall: this.addRenderCall,
@@ -210,8 +215,6 @@ class Canvas extends React.Component {
                 getComponentByUuid: this.getComponentByUuid,
                 enableShadows: this.enableShadows,
                 debug: this.debug,
-                enableVR: this.enableVR,
-                effect: this.effect
             })
         }) : null;
 

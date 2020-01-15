@@ -1,4 +1,4 @@
-Example with glTF object.
+Example with vr mode.
 
 ```
 yarn

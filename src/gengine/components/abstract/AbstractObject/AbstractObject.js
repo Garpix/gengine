@@ -20,7 +20,7 @@ class AbstractObject extends React.Component {
         if (this.obj) {
             scene.remove(this.obj);
         }
-    } 
+    }
 
     setColor = (cssColor='#ffffff') => {
         if (!this.material) return null;
