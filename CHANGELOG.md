@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.19.0 (15.01.2020)
+
+* Added VR mode.
+
 ### 0.18.3 (17.12.2019)
 
 * Changed OrbitControls.
