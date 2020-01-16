@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.19.2 (16.01.2020)
+
+* Materials for Box, Cylinder, Sphere. Auto apply material for objects.
+
 ### 0.19.1 (16.01.2020)
 
 * Hotfix Canvas bug.
