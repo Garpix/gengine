@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.19.1 (16.01.2020)
+
+* Hotfix Canvas bug.
+
 ### 0.19.0 (15.01.2020)
 
 * Added VR mode.

@@ -70,8 +70,8 @@ class Canvas extends React.Component {
         this.renderer.shadowCameraNear = 3;
         this.renderer.shadowCameraFar = 1000;
         this.renderer.shadowCameraFov = 50;
-        this.enableVR = enableVR,
-        this.renderer.vr.enabled = enableVR
+        this.enableVR = enableVR;
+        this.renderer.vr.enabled = enableVR;
 
         if (enableVR) {
           this.effect = new StereoEffect(this.renderer)
@@ -88,14 +88,14 @@ class Canvas extends React.Component {
         this.setState({
             ready: true,
         });
-        this.clock = new Clock;
+        this.clock = new Clock();
         this.animate();
         // setInterval(() => {
         //     console.log( 'TRIANGLES', this.renderer.info.render.triangles );
         //     }, 3000
         // )
     }
-    
+
     getVRDisplay = ( onDisplay ) => {
       if ( 'getVRDisplays' in navigator ) {
         navigator.getVRDisplays()
