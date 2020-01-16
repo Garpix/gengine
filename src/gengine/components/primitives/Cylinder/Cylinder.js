@@ -44,6 +44,7 @@ class Cylinder extends AbstractObject {
         this.obj.castShadow = enableShadows;
         this.obj.receiveShadow = enableShadows;
         scene.add(this.obj);
+        this.onPropsUpdate({}, this.props);
         this.uuid = this.obj.uuid;
         setTimeout(() => {
             this.readyComponent();

@@ -106,6 +106,7 @@ class AbstractObject extends React.Component {
             position,
             visible,
             intensity,
+            selectedMaterial = null,
         } = prevProps;
         // console.log('nextProps.animation', nextProps.animation);
         if (nextProps.position) {
@@ -134,6 +135,33 @@ class AbstractObject extends React.Component {
             if (intensity !== nextProps.intensity) {
                 this.obj.intensity = nextProps.intensity;
                 return true;
+            }
+        }
+        // for objects and primitives - override materials
+        if (nextProps.materials) {
+            if (nextProps.selectedMaterial !== selectedMaterial) {
+                const newMaterials = nextProps.materials[nextProps.selectedMaterial];
+                let found = false;
+                this.obj.traverse( ( node ) => {
+                    if (node.isMesh) {
+                        // console.log('node.material.name', node.material.name);
+                        if (node.material && Object.keys(newMaterials).includes(node.material.name)) {
+                            node.material = newMaterials[node.material.name];
+                            node.material.needsUpdate = true;
+                            found = true;
+                        }
+                    }
+                });
+                if (!found) {
+                    this.obj.traverse( ( node ) => {
+                        if (node.isMesh) {
+                            if (node.material) {
+                                node.material = newMaterials[Object.keys(newMaterials)[0]];
+                                node.material.needsUpdate = true;
+                            }
+                        }
+                    });
+                }
             }
         }
         return true;

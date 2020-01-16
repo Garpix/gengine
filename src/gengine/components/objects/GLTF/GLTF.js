@@ -98,7 +98,10 @@ class GLTF extends AbstractObject {
             //
             this.readyComponent();
             // fire loaded object
-            if (onLoadComplete) {onLoadComplete()}
+            if (onLoadComplete) {
+                onLoadComplete();
+                this.onPropsUpdate({}, this.props);
+            }
         });
     }
 
@@ -113,21 +116,6 @@ class GLTF extends AbstractObject {
                 this.setAnimation({
                     clipName: nextProps.animation.clipName,
                 })
-            }
-        }
-        // override materials
-        if (nextProps.materials) {
-            if (nextProps.selectedMaterial !== selectedMaterial) {
-                const newMaterials = nextProps.materials[nextProps.selectedMaterial];
-                this.obj.traverse( ( node ) => {
-                    if (node.isMesh) {
-                        // console.log('node.material.name', node.material.name);
-                        if (node.material && Object.keys(newMaterials).includes(node.material.name)) {
-                            node.material = newMaterials[node.material.name];
-                            node.material.needsUpdate = true;
-                        }
-                    }
-                });
             }
         }
         this.onPropsUpdate(this.props, nextProps);

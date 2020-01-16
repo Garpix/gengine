@@ -40,6 +40,7 @@ class Sphere extends AbstractObject {
         this.obj.receiveShadow = enableShadows;
         this.uuid = this.obj.uuid;
         scene.add(this.obj);
+        this.onPropsUpdate({}, this.props);
         setTimeout(() => {
             this.readyComponent();
         }, 1);
