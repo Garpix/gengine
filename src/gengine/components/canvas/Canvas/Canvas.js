@@ -53,8 +53,9 @@ class Canvas extends React.Component {
         // initialize();
         this.debug = debug;
         this.canvasDomElement = this.refCanvas.current;
-        this.canvasHeight = this.canvasDomElement.clientHeight;
-        this.canvasWidth = this.canvasDomElement.clientWidth;
+        this.canvasHeight = this.canvasDomElement.parentElement.clientHeight;
+        this.canvasWidth = this.canvasDomElement.parentElement.clientWidth;
+        console.log('size', this.canvasHeight, this.canvasWidth, this.canvasDomElement.parentElement);
         this.enableShadows = enableShadows;
         this.scene = new Scene();
         this.scene.name = SCENE_NAME;
@@ -116,8 +117,8 @@ class Canvas extends React.Component {
             this.canvasHeight = window.innerHeight;
             this.canvasWidth = window.innerWidth;
         } else {
-            this.canvasHeight = this.canvasDomElement.clientHeight;
-            this.canvasWidth = this.canvasDomElement.clientWidth;
+            this.canvasHeight = this.canvasDomElement.parentElement.clientHeight;
+            this.canvasWidth = this.canvasDomElement.parentElement.clientWidth;
         }
 
         if (this.enableVR) {
@@ -139,15 +140,15 @@ class Canvas extends React.Component {
     };
 
     getComponentByName = (name) => {
-        return this.components.filter((component, index) => {
+        return this.components.find((component, index) => {
             return component.name === name;
-        })[0];
+        });
     };
 
     getComponentByUuid = (uuid) => {
-        return this.components.filter((component, index) => {
+        return this.components.find((component, index) => {
             return component.uuid === uuid;
-        })[0];
+        });
     };
 
     onLoadingProgress = () => {

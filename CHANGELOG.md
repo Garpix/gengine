@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.20.1 (27.01.2020)
+
+* Bugfix Canvas component.
+
 ### 0.20.0 (17.01.2020)
 
 * Changed default up (coordinate system) to [0, 0, 1]. Z now is height.
