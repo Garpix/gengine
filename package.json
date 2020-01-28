@@ -1,6 +1,6 @@
 {
   "name": "@garpix/gengine",
-  "version": "0.20.1",
+  "version": "0.21.0",
   "private": false,
   "dependencies": {
     "@babel/cli": "^7.5.5",

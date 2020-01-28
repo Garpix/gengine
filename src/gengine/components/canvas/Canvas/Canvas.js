@@ -30,7 +30,7 @@ class Canvas extends React.Component {
         this.clock = null;
         this.debug = false;
         this.enableVR = false; //activate VR mode
-        Object3D.DefaultUp = new Vector3(0,0,1);
+        // Object3D.DefaultUp = new Vector3(0,0,1);
         //
         this.state = {
             ready: false,

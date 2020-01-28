@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.21.0 (28.01.2020)
+
+* Default up reverted to defaults.
+* Added Grid component.
+
 ### 0.20.1 (27.01.2020)
 
 * Bugfix Canvas component.

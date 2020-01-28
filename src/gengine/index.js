@@ -16,6 +16,7 @@ import Sky from "./components/objects/Sky";
 import Fog from "./components/effects/Fog";
 import Screenshot from "./components/utils/Screenshot";
 import AbstractObject from "./components/abstract/AbstractObject";
+import Grid from "./components/objects/Grid";
 
 export {
     AbstractObject,
@@ -36,4 +37,5 @@ export {
     Sky,
     Fog,
     Screenshot,
+    Grid,
 };
