@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.21.1 (28.01.2020)
+
+* Bug fixed: scale over props now working.
+
 ### 0.21.0 (28.01.2020)
 
 * Default up reverted to defaults.

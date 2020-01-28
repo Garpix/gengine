@@ -51,6 +51,11 @@ class AbstractObject extends React.Component {
         this.obj.rotation.set(...degreesRotations);
     };
 
+    setScale = (scale) => {
+        if (!this.obj || !this.obj.scale || !scale) return;
+        this.obj.scale.set(...scale);
+    };
+
     initComponent = () => {
         const {
             onComponentInit,
@@ -104,6 +109,7 @@ class AbstractObject extends React.Component {
         const {
             rotation,
             position,
+            scale,
             visible,
             intensity,
             selectedMaterial = null,
@@ -118,6 +124,12 @@ class AbstractObject extends React.Component {
         if (nextProps.rotation) {
             if (!rotation || !_.isEqual(rotation, nextProps.rotation)) {
                 this.setRotation(nextProps.rotation);
+                return true;
+            }
+        }
+        if (nextProps.scale) {
+            if (!scale || !_.isEqual(scale, nextProps.scale)) {
+                this.setScale(nextProps.scale);
                 return true;
             }
         }
