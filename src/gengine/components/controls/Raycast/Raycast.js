@@ -102,20 +102,20 @@ class Raycast extends AbstractObject {
     };
 
     raycast = (e) => {
-        const {camera, renderer, scene} = this.props;
-        this.mouse.x = ( e.clientX / window.innerWidth ) * 2 - 1;
-        this.mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
+        const {camera, renderer, scene, canvasDomElement} = this.props;
+        this.mouse.x = ( e.clientX / canvasDomElement.parentElement.clientWidth ) * 2 - 1;
+        this.mouse.y = - ( e.clientY / canvasDomElement.parentElement.clientHeight ) * 2 + 1;
         this.raycaster.setFromCamera( this.mouse, camera );
         let intersects = this.raycaster.intersectObjects( scene.children, true );
-        for ( var i = 0; i < intersects.length; i++ ) {
+        for (let i = 0; i < intersects.length; i++ ) {
             const obj = this.getTopLevelObject(intersects[i]);
             return obj;
         }
-        this.mouse.x = ( e.clientX / window.innerWidth ) * 2 - 1;
-        this.mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
+        this.mouse.x = ( e.clientX / canvasDomElement.parentElement.clientWidth ) * 2 - 1;
+        this.mouse.y = - ( e.clientY / canvasDomElement.parentElement.clientHeight ) * 2 + 1;
         this.raycaster.setFromCamera(this.mouse, camera );
         intersects = this.raycaster.intersectObjects( scene.children );
-        for ( var i = 0; i < intersects.length; i++ ) {
+        for (let i = 0; i < intersects.length; i++ ) {
             // console.log( intersects[ i ] );
             const obj = this.getTopLevelObject(intersects[i]);
             return obj;

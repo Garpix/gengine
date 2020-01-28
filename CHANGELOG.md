@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.21.2 (28.01.2020)
+
+* Bug fixed: raycast coordinates.
+
 ### 0.21.1 (28.01.2020)
 
 * Bug fixed: scale over props now working.
